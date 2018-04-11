@@ -19,27 +19,29 @@ const progGainAmp = '4096'; // see index.js for allowed values for your chip
 
 adc.channels = [];
 
-const readAsync = (channel) => {
-    if (!adc.busy) {
-        adc.readADCSingleEnded(channel, progGainAmp, samplesPerSecond, function (err, data) {
-            if (err) {
-                //logging / troubleshooting code goes here...  
-                throw err;
-            }
-            // if you made it here, then the data object contains your reading! 
-            console.log('adc func ch', channel, ' :', data)
-            adc.channels[channel] = data;
-            return data
-            // any other data processing cssh ode goes here...  
-        })
-    }
+adc.read = (channel) => {
+    return new Promise(function (resolve) {
+        if (!adc.busy) {
+            adc.readADCSingleEnded(channel, progGainAmp, samplesPerSecond, function (err, data) {
+                if (err) {
+                    //logging / troubleshooting code goes here...  
+                    throw err;
+                }
+                // if you made it here, then the data object contains your reading! 
+                console.log('adc func ch', channel, ' :', data)
+                adc.channels[channel] = data;
+                resolve(data)
+                // any other data processing code goes here...  
+            })
+        }
+    });
 }
 
 //Tstat dial * (end) = 11.75, 85F = 80, 70F = 233, 60F = 313, 50F = 407.5, ** (end) = 460.5
 
-adc.read = (channel) => new Promise(function (resolve) {
-    console.log(readAsync(channel))
-    return resolve("readAsync(channel)")
-});
+// adc.read = (channel) => new Promise(function (resolve) {
+//     console.log(readAsync(channel))
+//     return resolve("readAsync(channel)")
+// });
 
 module.exports = adc;
