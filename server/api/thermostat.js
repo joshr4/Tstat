@@ -1,6 +1,6 @@
 const router = require('express').Router();
 //const { Channel, Message } = require('../db/models');
-const { adc, ch0, ch1 } = require('../ads1115')
+const adc = require('../ads1115')
 
 module.exports = router;
 
