@@ -10,7 +10,7 @@ router.get('/ch:channel', function (req, res, next) {
   adc.read(req.params.channel)
     .then(data => {
       console.log('data ', data)
-    res.json('tetxrgfjhkgc')
+    res.json('tetxrgfjhkg')
     })
     .catch(next)
 });
