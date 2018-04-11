@@ -5,11 +5,15 @@ const adc = require('../ads1115')
 module.exports = router;
 
 
+let ch1 = 1
+let ch0 = 0
 
 router.get('/', function (req, res, next) {
-  console.log('adc call ', adc)
-  console.log('adc.readCh0', adc.read(0))
-  console.log('adc.readCh1', adc.read(1))
+  ch1 = adc.read(1)
+  ch0 = adc.read(0)
+  
+  console.log('adc.readCh0', ch0)
+  console.log('adc.readCh1', ch1)
   
   res.json('Get Request to /thermostat')
 });

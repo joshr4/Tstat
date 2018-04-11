@@ -25,7 +25,7 @@ adc.read = (channel) => {
             }
             // if you made it here, then the data object contains your reading! 
             console.log('data ',data) 
-            return 999;
+            return data;
             // any other data processing code goes here...  
         })
     }
