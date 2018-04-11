@@ -3,9 +3,13 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
+const PORT = 8080 //|| process.env.PORT;
 
 module.exports = app;
 
+console.log('TESTING')
+
+app.listen(PORT, () => console.log(`Change the temp on port ${PORT}`));
 
 // logging middleware
 app.use(morgan('dev'));
