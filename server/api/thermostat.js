@@ -5,8 +5,8 @@ const adc = require('../ads1115')
 module.exports = router;
 
 router.get('/ch:channel', function (req, res, next) {
-  console.log(adc.channels[req.params.channel])
   adc.read(req.params.channel)
+  console.log('channel values: ', adc.channels)
   res.json('tstat page')
 });
 
