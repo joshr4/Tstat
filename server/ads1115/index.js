@@ -24,7 +24,7 @@ adc.readCh0 = () => {
                 throw err;
             }
             // if you made it here, then the data object contains your reading!  
-            reading = data;
+            return data;
             // any other data processing code goes here...  
         })
     }
