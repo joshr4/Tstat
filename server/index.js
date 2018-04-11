@@ -4,14 +4,15 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
 const PORT = 8080 //|| process.env.PORT;
-const adc = require('./ads1115/')
+// const adc = require('./ads1115/')
+
+// setInterval(adc.read(), 1000)
 
 
 module.exports = app;
 
 app.listen(PORT, () => console.log(`Change the temp on port ${PORT}`));
 
-setInterval(adc.read(), 500)
 
 // logging middleware
 app.use(morgan('dev'));

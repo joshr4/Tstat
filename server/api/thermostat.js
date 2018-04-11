@@ -6,9 +6,9 @@ module.exports = router;
 
 router.get('/', function (req, res, next) {
 
-  console.log('adc.readCh0', ch0)
-  console.log('adc.readCh1', ch1)
-
+  console.log(adc)
+  adc.read(0)
+  
   res.json('Get Request to /thermostat')
 });
 
