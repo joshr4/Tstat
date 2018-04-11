@@ -1,13 +1,14 @@
 const router = require('express').Router();
 //const { Channel, Message } = require('../db/models');
 const Promise = require('bluebird')
-const adc = Promise.promisifyAll(require('../ads1115'))
+//const adc = Promise.promisifyAll(require('../ads1115'))
+const adc = require('../ads1115')
 
 module.exports = router;
 
 router.get('/ch:channel', function (req, res, next) {
   adc.read(req.params.channel)
-    .then(data => res.json({value: data}))
+    .then(data => res.json(data))
     .catch(next)
 });
 
