@@ -28,7 +28,7 @@ adc.read = (channel) => {
                     throw err;
                 }
                 // if you made it here, then the data object contains your reading! 
-                let dial = (data - 873)/-9.28
+                var dial = (data - 873)/-9.28
                 console.log('adc func ch', channel, ' :', dial)
                 adc.channels[channel] = dial;
                 resolve(dial)
