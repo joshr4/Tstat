@@ -24,6 +24,7 @@
     "node-ads1x15": "^1.0.3",
     "path": "^0.12.7",
     "rpi-gpio": "^0.9.1",
-    "sequelize": "^4.26.0"
+    "sequelize": "^4.26.0",
+    "bluebird":"3.5.1"
   }
 }
