@@ -4,10 +4,6 @@ const { adc, ch0, ch1 } = require('../ads1115')
 
 module.exports = router;
 
-
-var ch1 = 1
-var ch0 = 0
-
 router.get('/', function (req, res, next) {
 
   console.log('adc.readCh0', ch0)
