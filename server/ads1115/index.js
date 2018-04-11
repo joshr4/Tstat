@@ -7,7 +7,7 @@ const chip = 1; //0 for ads1015, 1 for ads1115
 // Optionally i2c address as (chip, address) or (chip, address, i2c_dev)
 // So to use  /dev/i2c-0 use the line below instead...:
 
-const adc = new ads1x15(chip, 'dev/i2c-1');
+const adc = new ads1x15(chip, 48, 'dev/i2c-1');
 
 //const channel = 0; //channel 0, 1, 2, or 3...  
 const samplesPerSecond = '250'; // see index.js for allowed values for your chip  
