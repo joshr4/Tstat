@@ -15,21 +15,32 @@ const progGainAmp = '4096'; // see index.js for allowed values for your chip
 
 //somewhere to store our reading   
 //var reading = 0;
+let ch0 = 0;
+let ch1 = 0;
 
-adc.read = (channel) => {
+adc.read = () => {
     if (!adc.busy) {
-        adc.readADCSingleEnded(channel, progGainAmp, samplesPerSecond, function (err, data) {
+        adc.readADCSingleEnded(0, progGainAmp, samplesPerSecond, function (err, data) {
             if (err) {
                 //logging / troubleshooting code goes here...  
                 throw err;
             }
             // if you made it here, then the data object contains your reading! 
-            console.log('data ',data) 
-            return data;
+            console.log('ch0 ', data)
+            ch0 = data;
+            // any other data processing code goes here...  
+        })
+        adc.readADCSingleEnded(1, progGainAmp, samplesPerSecond, function (err, data) {
+            if (err) {
+                //logging / troubleshooting code goes here...  
+                throw err;
+            }
+            // if you made it here, then the data object contains your reading! 
+            console.log('ch1 ', data)
+            ch1 = data;
             // any other data processing code goes here...  
         })
     }
 }
 
-console.log('ch0', adc.read(0))
-module.exports = adc;
+module.exports = { adc, ch0, ch1 };

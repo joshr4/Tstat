@@ -1,6 +1,6 @@
 const router = require('express').Router();
 //const { Channel, Message } = require('../db/models');
-const adc = require('../ads1115')
+const { adc, ch0, ch1 } = require('../ads1115')
 
 module.exports = router;
 
@@ -9,12 +9,10 @@ var ch1 = 1
 var ch0 = 0
 
 router.get('/', function (req, res, next) {
-  ch1 = adc.read(1)
-  ch0 = adc.read(0)
 
   console.log('adc.readCh0', ch0)
   console.log('adc.readCh1', ch1)
-  
+
   res.json('Get Request to /thermostat')
 });
 
