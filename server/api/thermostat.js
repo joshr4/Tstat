@@ -7,7 +7,7 @@ module.exports = router;
 
 router.get('/ch:channel', function (req, res, next) {
   adc.read(req.params.channel)
-    .then(data => res.json({data}))
+    .then(data => res.json({value: data}))
     .catch(next)
 });
 
