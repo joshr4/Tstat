@@ -4,12 +4,11 @@ const adc = require('../ads1115')
 
 module.exports = router;
 
-router.get('/', function (req, res, next) {
+router.get('/ch:channel', function (req, res, next) {
 
   console.log(adc)
-  adc.read(0)
   
-  res.json('Get Request to /thermostat')
+  res.json('Get Request to /thermostat', adc.read(req.params.channel))
 });
 
 

@@ -27,8 +27,9 @@ adc.read = (channel) => {
                 throw err;
             }
             // if you made it here, then the data object contains your reading! 
-            console.log('ch',channel,' :', data)
+            //console.log('ch',channel,' :', data)
             adc.channels[channel] = data;
+            return data
             // any other data processing code goes here...  
         })
     }
