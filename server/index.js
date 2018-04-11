@@ -3,10 +3,11 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
+const adc = require('./ads1115/')
 const PORT = 8080 //|| process.env.PORT;
 // const adc = require('./ads1115/')
 
-// setInterval(adc.read(), 1000)
+setInterval(() => console.log(adc.read()), 1000)
 
 
 module.exports = app;

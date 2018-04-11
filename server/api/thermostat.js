@@ -6,8 +6,14 @@ const adc = require('../ads1115')
 
 module.exports = router;
 
-router.get('/ch:channel', function (req, res, next) {
-  adc.read(req.params.channel)
+router.get('/ch0', function (req, res, next) {
+  adc.readch0()
+    .then(data => res.json(data))
+    .catch(next)
+});
+
+router.get('/ch1', function (req, res, next) {
+  adc.readch1()
     .then(data => res.json(data))
     .catch(next)
 });

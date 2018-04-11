@@ -19,19 +19,38 @@ const progGainAmp = '4096'; // see index.js for allowed values for your chip
 
 adc.channels = [];
 
-adc.read = (channel) => {
+adc.readch0 = () => {
     return new Promise(function (resolve) {
         if (!adc.busy) {
-            adc.readADCSingleEnded(channel, progGainAmp, samplesPerSecond, function (err, data) {
+            adc.readADCSingleEnded(0, progGainAmp, samplesPerSecond, function (err, data) {
                 if (err) {
                     //logging / troubleshooting code goes here...  
                     throw err;
                 }
                 // if you made it here, then the data object contains your reading! 
                 var dial = (data - 873)/-9.28
-                console.log('adc func ch', channel, ' :', dial)
-                adc.channels[channel] = dial;
+                console.log('adc func ch0: ', dial)
+                adc.channels[0] = dial;
                 resolve(dial)
+                // any other data processing code goes here...  
+            })
+        }
+    });
+}
+
+adc.readch1 = () => {
+    return new Promise(function (resolve) {
+        if (!adc.busy) {
+            adc.readADCSingleEnded(1, progGainAmp, samplesPerSecond, function (err, data) {
+                if (err) {
+                    //logging / troubleshooting code goes here...  
+                    throw err;
+                }
+                // if you made it here, then the data object contains your reading! 
+                var temp = (data - 873)/-9.28
+                console.log('adc func ch1: ', temp)
+                adc.channels[1] = temp;
+                resolve(temp)
                 // any other data processing code goes here...  
             })
         }
