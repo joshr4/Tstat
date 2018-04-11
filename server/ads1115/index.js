@@ -1,4 +1,5 @@
 const ads1x15 = require('node-ads1x15');
+const Promise = require('bluebird')
 const chip = 1; //0 for ads1015, 1 for ads1115  
 
 //Simple usage (default ADS address on pi 2b or 3):
@@ -18,7 +19,7 @@ const progGainAmp = '4096'; // see index.js for allowed values for your chip
 
 adc.channels = [];
 
-adc.read = (channel) => {
+const readAsync = (channel) => {
     if (!adc.busy) {
         adc.readADCSingleEnded(channel, progGainAmp, samplesPerSecond, function (err, data) {
             if (err) {
@@ -33,5 +34,9 @@ adc.read = (channel) => {
         })
     }
 }
+
+adc.read = (channel) => new Promise(function (resolve) {
+  resolve(readAsync(channel))
+});
 
 module.exports = adc;
