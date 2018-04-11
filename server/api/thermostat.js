@@ -6,7 +6,7 @@ module.exports = router;
 
 router.get('/ch:channel', function (req, res, next) {
   adc.read(req.params.channel)
-  console.log('channel values: ', adc.channels)
+  console.log('route channel values: ', adc.channels)
   res.json('tstat page')
 });
 
