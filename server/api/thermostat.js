@@ -3,12 +3,11 @@ const router = require('express').Router();
 const adc = require('../ads1115')
 
 module.exports = router;
-let value = 0;
 
 router.get('/ch:channel', function (req, res, next) {
   console.log(adc)
-  value = adc.read(req.params.channel)
-  res.json('Get Request to /thermostat ', value)
+  //adc.read(req.params.channel)
+  res.json(adc.read(req.params.channel))
 });
 
 
