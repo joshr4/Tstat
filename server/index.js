@@ -11,6 +11,8 @@ console.log('TESTING')
 
 app.listen(PORT, () => console.log(`Change the temp on port ${PORT}`));
 
+console.log('testing 2')
+
 // logging middleware
 app.use(morgan('dev'));
 
