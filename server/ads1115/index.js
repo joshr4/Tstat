@@ -38,7 +38,7 @@ const readAsync = (channel) => {
 //Tstat dial * (end) = 11.75, 85F = 80, 70F = 233, 60F = 313, 50F = 407.5, ** (end) = 460.5
 
 adc.read = (channel) => new Promise(function (resolve) {
-  resolve(readAsync(channel))
+  return resolve(readAsync(channel))
 });
 
 module.exports = adc;
