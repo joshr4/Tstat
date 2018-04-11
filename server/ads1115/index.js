@@ -29,4 +29,6 @@ adc.read = (channel) => {
         })
     }
 }
+
+console.log('ch0', adc.read(0))
 module.exports = adc;
