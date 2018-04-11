@@ -7,8 +7,8 @@ module.exports = router;
 router.get('/ch:channel', function (req, res, next) {
 
   console.log(adc)
-  
-  res.json('Get Request to /thermostat', adc.read(req.params.channel))
+  let value = adc.read(req.params.channel)
+  res.json('Get Request to /thermostat ', value)
 });
 
 
