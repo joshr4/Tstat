@@ -28,9 +28,10 @@ adc.read = (channel) => {
                     throw err;
                 }
                 // if you made it here, then the data object contains your reading! 
-                console.log('adc func ch', channel, ' :', data)
-                adc.channels[channel] = data;
-                resolve(data)
+                let dial = (data - 873)/-9.28
+                console.log('adc func ch', channel, ' :', dial)
+                adc.channels[channel] = dial;
+                resolve(dial)
                 // any other data processing code goes here...  
             })
         }
@@ -38,6 +39,7 @@ adc.read = (channel) => {
 }
 
 //Tstat dial * (end) = 11.75, 85F = 80, 70F = 233, 60F = 313, 50F = 407.5, ** (end) = 460.5
+//-9.28*x + 873
 
 // adc.read = (channel) => new Promise(function (resolve) {
 //     console.log(readAsync(channel))
