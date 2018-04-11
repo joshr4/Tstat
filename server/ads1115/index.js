@@ -19,7 +19,6 @@ const progGainAmp = '4096'; // see index.js for allowed values for your chip
 adc.channels = [];
 
 adc.read = (channel) => {
-
     if (!adc.busy) {
         adc.readADCSingleEnded(channel, progGainAmp, samplesPerSecond, function (err, data) {
             if (err) {
@@ -30,7 +29,7 @@ adc.read = (channel) => {
             //console.log('ch',channel,' :', data)
             adc.channels[channel] = data;
             return data
-            // any other data processing code goes here...  
+            // any other data processing cssh ode goes here...  
         })
     }
 }
