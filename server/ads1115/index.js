@@ -15,10 +15,11 @@ const progGainAmp = '4096'; // see index.js for allowed values for your chip
 
 //somewhere to store our reading   
 //var reading = 0;
-let ch0 = 0;
-let ch1 = 0;
+var ch0;
+var ch1;
 
 adc.read = () => {
+
     if (!adc.busy) {
         adc.readADCSingleEnded(0, progGainAmp, samplesPerSecond, function (err, data) {
             if (err) {
