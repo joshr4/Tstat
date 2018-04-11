@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/joshr4/Tstat#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
+    "morgan": "^1.9.0",
     "node-ads1x15": "^1.0.3",
+    "path": "^0.12.7",
     "rpi-gpio": "^0.9.1"
   }
 }
