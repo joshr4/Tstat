@@ -1,11 +1,16 @@
 const router = require('express').Router();
 //const { Channel, Message } = require('../db/models');
+const adc = require('../ads1115')
 
 module.exports = router;
 
+
+
 router.get('/', function (req, res, next) {
+  console.log(adc.readCh0())
   res.json('Get Request to /thermostat')
 });
+
 
 
 /*
