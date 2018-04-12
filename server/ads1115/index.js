@@ -19,6 +19,8 @@ const progGainAmp = '4096'; // see index.js for allowed values for your chip
 
 adc.channels = [];
 
+
+//temperature
 adc.readch0 = () => {
     return new Promise(function (resolve) {
         if (!adc.busy) {
@@ -43,7 +45,7 @@ adc.readch0 = () => {
         }
     });
 }
-
+//dial setpoint
 adc.readch1 = () => {
     return new Promise(function (resolve) {
         if (!adc.busy) {
