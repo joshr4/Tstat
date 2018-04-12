@@ -30,10 +30,10 @@ adc.readch0 = () => {
                 // if you made it here, then the data object contains your reading! 
                 var dial = (data - 873) / -9.28
                 //Tstat dial * (end) = 11.75, 85F = 80, 70F = 233, 60F = 313, 50F = 407.5, ** (end) = 460.5
-                //-9.28*x + 873
+                //data = -9.28*dial + 873
                 console.log('adc func ch0: ', dial)
                 adc.channels[0] = dial;
-                resolve(dial)
+                resolve([dial, data])
                 // any other data processing code goes here...  
             })
         }
@@ -58,7 +58,7 @@ adc.readch1 = () => {
                 //resistor = 8.19 kohm
                 console.log('adc func ch1: ', temp)
                 adc.channels[1] = temp;
-                resolve(temp)
+                resolve([temp, data])
                 // any other data processing code goes here...  
             })
         }

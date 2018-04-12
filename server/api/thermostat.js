@@ -8,14 +8,13 @@ module.exports = router;
 
 router.get('/ch0', function (req, res, next) {
   adc.readch0()
-    .then(data => res.json({dial: data}))
+    .then(data => res.json({dial: data[0], raw: data[1]}))
     .catch(next)
 });
 
 router.get('/ch1', function (req, res, next) {
   adc.readch1()
-    .then(data => res.json({temp: data
-    }))
+    .then(data => res.json({temp: data[0], raw: data[1]}))
     .catch(next)
 });
 
