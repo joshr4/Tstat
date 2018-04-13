@@ -37,7 +37,7 @@ adc.readch0 = () => {
                 //Vout*R1/Vin = R2 - Vout*R2/Vin
                 //R1 = (Vin*R2)/Vout - R2
                 //resistor = 8.19 kohm
-                console.log('adc func ch1: ', temp)
+                console.log('adc func ch1: maggie', temp)
                 adc.channels[1] = temp;
                 resolve([temp, data])
                 // any other data processing code goes here...
