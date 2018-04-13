@@ -18,6 +18,12 @@ router.get('/ch1', function (req, res, next) {
     .catch(next)
 });
 
+router.get('/maggie', function (req, res, next) {
+  adc.readch1()
+    .then(data => res.json({maggie: 'is the best'}))
+    .catch(next)
+});
+
 
 
 /*
