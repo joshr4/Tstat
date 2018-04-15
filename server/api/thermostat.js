@@ -13,7 +13,7 @@ router.get('/ch0', function (req, res, next) {
 });
 
 router.get('/ch1', function (req, res, next) {
-  adc.updateChannels()
+  adc.readContCh(0)
     .then(data => res.json({data}))
     .catch(next)
 });

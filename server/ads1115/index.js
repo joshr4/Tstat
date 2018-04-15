@@ -29,14 +29,41 @@ adc.readCh = (channel) => {
     });
 }
 
+adc.readContCh = (channel) => {
+    return new Promise(function (resolve) {
+        if (!adc.busy) {
+            adc.startContinuousConversion(channel, progGainAmp, samplesPerSecond, function (err, data) {
+                if (err) {
+                    //logging / troubleshooting code goes here...  
+                    throw err;
+                }
+                resolve(data)
+            })
+        }
+    });
+}
+
+adc.readContChTest = (channel) => {
+    if (!adc.busy) {
+        adc.startContinuousConversion(channel, progGainAmp, samplesPerSecond, function (err, data) {
+            if (err) {
+                //logging / troubleshooting code goes here...  
+                throw err;
+            }
+            console.log('datatest ', data)
+
+            return data
+        })
+    }
+}
+console.log('test ', adc.readContChTest(0))
+//ads1x15.prototype.startContinuousConversion = function(channel, pga, sps, callback) {
+
 adc.updateChannels = () => {
-    console.log('all ', Promise.all([
-        adc.readCh(0),
-        adc.readCh(1),
-        // adc.readCh(2),
-        // adc.readCh(3),
-    ]))
+    var output = {}
+
     console.log('readch ', adc.readCh(0))
+    return output
 }
 // if you made it here, then the data object contains your reading! 
 //Vin--R1--Vout--R2--Gnd
