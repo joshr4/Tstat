@@ -17,63 +17,55 @@ const progGainAmp = '4096'; // see index.js for allowed values for your chip
 //somewhere to store our reading   
 //var reading = 0;
 
+adc.channels = [];
+
+
 //temperature
 adc.readch0 = () => {
     return new Promise(function (resolve) {
         if (!adc.busy) {
-            var dial = 0
-            var temp = 0
             adc.readADCSingleEnded(0, progGainAmp, samplesPerSecond, function (err, data) {
                 if (err) {
                     //logging / troubleshooting code goes here...  
                     throw err;
                 }
                 // if you made it here, then the data object contains your reading! 
+                var temp = data
                 //Vin--R1--Vout--R2--Gnd
                 //Vout = Vin*(R2/(R2+R1))
                 //Vout(R2+R1)/Vin=R2
                 //Vout*R1/Vin = R2 - Vout*R2/Vin
                 //R1 = (Vin*R2)/Vout - R2
                 //resistor = 8.19 kohm
-                temp = data
-                //resolve([temp, data])
+                console.log('adc func ch1: maggie', temp)
+                adc.channels[1] = temp;
+                resolve([temp, data])
                 // any other data processing code goes here...
             })
+        }
+    });
+}
+//dial setpoint
+adc.readch1 = () => {
+    return new Promise(function (resolve) {
+        if (!adc.busy) {
             adc.readADCSingleEnded(1, progGainAmp, samplesPerSecond, function (err, data) {
                 if (err) {
                     //logging / troubleshooting code goes here...  
                     throw err;
                 }
                 // if you made it here, then the data object contains your reading! 
+                var dial = (data - 873) / -9.28
                 //Tstat dial * (end) = 11.75, 85F = 80, 70F = 233, 60F = 313, 50F = 407.5, ** (end) = 460.5
                 //data = -9.28*dial + 873
-                dial = (data - 873) / -9.28
+                console.log('adc func ch0: ', dial)
+                adc.channels[0] = dial;
+                resolve([dial, data])
                 // any other data processing code goes here...  
             })
-            resolve([temp, dial])
         }
     });
 }
-//dial setpoint
-// adc.readch1 = () => {
-//     return new Promise(function (resolve) {
-//         if (!adc.busy) {
-//             adc.readADCSingleEnded(1, progGainAmp, samplesPerSecond, function (err, data) {
-//                 if (err) {
-//                     //logging / troubleshooting code goes here...  
-//                     throw err;
-//                 }
-//                 // if you made it here, then the data object contains your reading! 
-//                 var dial = (data - 873) / -9.28
-//                 //Tstat dial * (end) = 11.75, 85F = 80, 70F = 233, 60F = 313, 50F = 407.5, ** (end) = 460.5
-//                 //data = -9.28*dial + 873
-//                 console.log('adc func ch0: ', dial)
-//                 adc.channels[0] = dial;
-//                 resolve([dial, data])
-//                 // any other data processing code goes here...  
-//             })
-//         }
-//     });
-// }
+
 
 module.exports = adc;
