@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const adc = require('./ads1115/')
 const PORT = 8080 //|| process.env.PORT;
+const stat = require('./stat')
 // const adc = require('./ads1115/')
 
 //setInterval(() => console.log(adc.read()), 1000)
@@ -12,7 +13,8 @@ const PORT = 8080 //|| process.env.PORT;
 
 module.exports = app;
 
-app.listen(PORT, () => console.log(`Change the temp on port ${PORT}`));
+app.listen(PORT, () => console.log(`Change the temp on port ${PORT}`))
+  .then(() => stat.start())
 
 
 // logging middleware
