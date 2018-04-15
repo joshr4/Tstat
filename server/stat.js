@@ -8,7 +8,7 @@ stat.update = () => {
 }
 
 stat.start = () => {
-    setInterval(stat.update(), 1500)
+    setInterval(stat.update, 1500)
 }
 
 module.exports = stat;

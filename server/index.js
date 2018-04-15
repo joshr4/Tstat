@@ -15,7 +15,7 @@ module.exports = app;
 
 app.listen(PORT, () => console.log(`Change the temp on port ${PORT}`))
 
-setInterval(stat.update(), 1500)
+setInterval(stat.start, 1500)
 
 
 // logging middleware
