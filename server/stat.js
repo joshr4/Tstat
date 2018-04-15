@@ -1,11 +1,12 @@
 const adc = require('./ads1115')
+const LED = require('./gpio')
 var curDate = new Date
 
 var stat = {
     //constants
-    minOnTime: 10000, //minimum time to let the heater run, in milli seconds
-    minOffTime: 10000, //minimum time before turning heater back on, in milli seconds
-    deadband: 2, //amount temp must rise above setpoint before heater turns off
+    minOnTime: 20000, //minimum time to let the heater run, in milli seconds
+    minOffTime: 20000, //minimum time before turning heater back on, in milli seconds
+    deadband: 2, //temp must be above setpoint by half of deadband to turn off heater, and below setpoint by half of deadband to turn on
 
     //variables
     heat: false,
@@ -38,8 +39,8 @@ stat.updateCh = () => {
 }
 
 stat.compareTemp = () => {
-    if (stat.temp.value < stat.occSetpoint) stat.heatOn()
-    else stat.heatOff()
+    if (stat.temp.value < stat.occSetpoint + stat.deadband / 2) stat.heatOn()
+    else if (stat.temp.value > stat.occSetpoint + stat.deadband / 2) stat.heatOff()
 }
 
 stat.start = () => {
@@ -51,19 +52,21 @@ stat.start = () => {
 stat.heatOn = function () {
     if (!stat.heat && stat.lastOff + stat.minOffTime < Date.now()) {
         console.log('heat on!')
+        LED.writeSync(1)
         stat.heat = true;
         stat.lastOn = Date.now();
     }
-    else console.log('else heaton, lastOn: ',stat.lastOn, ', lastOff: ',stat.lastOff)
+    else console.log('else heaton, lastOn: ', stat.lastOn, ', lastOff: ', stat.lastOff)
 }
 
 stat.heatOff = function () {
     if (stat.heat && stat.lastOn + stat.minOnTime < Date.now()) {
         console.log('heat off!')
+        LED.writeSync(0)
         stat.heat = false;
         stat.lastOff = Date.now();
     }
-    else console.log('else heatoff, lastOn: ',stat.lastOn, ', lastOff: ',stat.lastOff)
+    else console.log('else heatoff, lastOn: ', stat.lastOn, ', lastOff: ', stat.lastOff)
 
 }
 
