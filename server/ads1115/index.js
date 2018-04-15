@@ -32,9 +32,9 @@ adc.readCh = (channel) => {
 adc.updateChannels = () => {
     return Promise.all([
         adc.readCh(0),
-        adc.readCh(1),
-        adc.readCh(2),
-        adc.readCh(3),
+        // adc.readCh(1),
+        // adc.readCh(2),
+        // adc.readCh(3),
     ])
 }
 // if you made it here, then the data object contains your reading! 
