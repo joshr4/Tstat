@@ -1,8 +1,8 @@
 const adc = require('./ads1115')
 
 var stat = {
+    ch0: { raw: 0, value: 0 },
     ch1: { raw: 0, value: 0 },
-    ch2: { raw: 0, value: 0 },
 }
 
 stat.update = () => {
