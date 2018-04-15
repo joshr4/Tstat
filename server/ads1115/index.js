@@ -48,6 +48,7 @@ adc.readContChTest = (channel) => {
         adc.startContinuousConversion(channel, progGainAmp, samplesPerSecond, function (err, data) {
             if (err) {
                 //logging / troubleshooting code goes here...  
+                console.log('error ', err)
                 throw err;
             }
             console.log('datatest ', data)
