@@ -24,8 +24,8 @@ adc.channels = [];
 adc.readch0 = () => {
     return new Promise(function (resolve) {
         if (!adc.busy) {
-            let dial = 0
-            let temp = 0
+            var dial = 0
+            var temp = 0
             adc.readADCSingleEnded(0, progGainAmp, samplesPerSecond, function (err, data) {
                 if (err) {
                     //logging / troubleshooting code goes here...  
