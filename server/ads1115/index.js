@@ -52,7 +52,7 @@ adc.readContChTest = (channel) => {
             }
             console.log('datatest ', data)
 
-            return data
+            //return data
         })
     }
 }
