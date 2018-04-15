@@ -7,8 +7,8 @@ const adc = require('../ads1115')
 module.exports = router;
 
 router.get('/ch0', function (req, res, next) {
-  adc.readch0()
-    .then(data => res.json({temp: data[0], dial: data[1]}))
+  adc.updateChannels()
+    .then(data => res.json(data))
     .catch(next)
 });
 
