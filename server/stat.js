@@ -6,8 +6,9 @@ stat.update = () => {
     adc.ch0()
     .then(data => {
         stat.ch0 = data
+        console.log(stat.ch0)
     });
-    console.log(stat.ch0)
+    
 }
 
 stat.start = () => {
