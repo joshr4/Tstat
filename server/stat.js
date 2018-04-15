@@ -1,4 +1,5 @@
 const adc = require('./ads1115')
+var curDate = new Date
 
 var stat = {
     //constants
@@ -7,9 +8,8 @@ var stat = {
     deadband: 2, //amount temp must rise above setpoint before heater turns off
 
     //variables
-    curDate: new Date,
     lastOn: curDate.getTime() / 1000,
-    lastOff: curDate.getTime() / 1000 - minOffTime,
+    lastOff: curDate.getTime() / 1000 - 8,
     temperature: null,
     activeSetpoint: 70,
     occSetpoint: 70,
