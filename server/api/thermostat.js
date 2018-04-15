@@ -8,20 +8,21 @@ module.exports = router;
 
 router.get('/ch0', function (req, res, next) {
   adc.readch0()
-    .then(data => res.json({temp: data[0], raw: data[1]}))
+    .then(data => res.json({temp: data[0], dial: data[1]}))
     .catch(next)
 });
 
 router.get('/ch1', function (req, res, next) {
   adc.readch1()
-    .then(data => res.json({dial: data[0], raw: data[1]}))
+    .then(data => res.json({temp: data[0], dial: data[1]}))
     .catch(next)
 });
 
 router.get('/maggie', function (req, res, next) {
-  adc.readch1()
-    .then(data => res.json({maggie: 'is the best'}))
-    .catch(next)
+  res.json({maggie: 'is the best'}
+  // adc.readch1()
+  //   .then(data => res.json({maggie: 'is the best'}))
+  //   .catch(next)
 });
 
 

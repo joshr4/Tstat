@@ -24,13 +24,15 @@ adc.channels = [];
 adc.readch0 = () => {
     return new Promise(function (resolve) {
         if (!adc.busy) {
+            let dial = 0
+            let temp = 0
             adc.readADCSingleEnded(0, progGainAmp, samplesPerSecond, function (err, data) {
                 if (err) {
                     //logging / troubleshooting code goes here...  
                     throw err;
                 }
                 // if you made it here, then the data object contains your reading! 
-                var temp = data
+                temp = data
                 //Vin--R1--Vout--R2--Gnd
                 //Vout = Vin*(R2/(R2+R1))
                 //Vout(R2+R1)/Vin=R2
@@ -39,9 +41,24 @@ adc.readch0 = () => {
                 //resistor = 8.19 kohm
                 console.log('adc func ch1: maggie', temp)
                 adc.channels[1] = temp;
-                resolve([temp, data])
+                //resolve([temp, data])
                 // any other data processing code goes here...
             })
+            adc.readADCSingleEnded(1, progGainAmp, samplesPerSecond, function (err, data) {
+                if (err) {
+                    //logging / troubleshooting code goes here...  
+                    throw err;
+                }
+                // if you made it here, then the data object contains your reading! 
+                dial = (data - 873) / -9.28
+                //Tstat dial * (end) = 11.75, 85F = 80, 70F = 233, 60F = 313, 50F = 407.5, ** (end) = 460.5
+                //data = -9.28*dial + 873
+                console.log('adc func ch0: ', dial)
+                adc.channels[0] = dial;
+                resolve([dial, data])
+                // any other data processing code goes here...  
+            })
+            resolve([temp, dial])
         }
     });
 }
@@ -66,12 +83,5 @@ adc.readch1 = () => {
         }
     });
 }
-
-
-
-// adc.read = (channel) => new Promise(function (resolve) {
-//     console.log(readAsync(channel))
-//     return resolve("readAsync(channel)")
-// });
 
 module.exports = adc;
