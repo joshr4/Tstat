@@ -14,7 +14,8 @@ const stat = require('./stat')
 module.exports = app;
 
 app.listen(PORT, () => console.log(`Change the temp on port ${PORT}`))
-  .then(() => stat.start())
+
+stat.start()
 
 
 // logging middleware
