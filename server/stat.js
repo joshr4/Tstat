@@ -56,7 +56,7 @@ stat.heatOn = function () {
         stat.heat = true;
         stat.lastOn = Date.now();
     }
-    else console.log('else heaton, lastOn: ', stat.lastOn, ', lastOff: ', stat.lastOff)
+    else console.log('else ON, lastOn: ', stat.lastOn, ', lastOff: ', stat.lastOff)
 }
 
 stat.heatOff = function () {
@@ -66,7 +66,7 @@ stat.heatOff = function () {
         stat.heat = false;
         stat.lastOff = Date.now();
     }
-    else console.log('else heatoff, lastOn: ', stat.lastOn, ', lastOff: ', stat.lastOff)
+    else console.log('else OFF, lastOn: ', stat.lastOn, ', lastOff: ', stat.lastOff)
 
 }
 
