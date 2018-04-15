@@ -1,6 +1,6 @@
 const adc = require('./ads1115')
-const LED = require('./gpio')
-var curDate = new Date
+var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+var LED = new Gpio(4, 'out'); //use GPIO pin 3, and specify that it is output
 
 var stat = {
     //constants
