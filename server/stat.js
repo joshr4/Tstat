@@ -1,6 +1,6 @@
 const adc = require('./ads1115')
 
-let stat = {}
+var stat = {}
 
 stat.update = () => {
     stat.ch0 = adc.ch0()
