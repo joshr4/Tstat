@@ -47,7 +47,7 @@ adc.updateChannels = () => {
 //resistor = 8.19 kohm
 
 //dial setpoint
-var dial = (data - 873) / -9.28
+//var dial = (data - 873) / -9.28
 //Tstat dial * (end) = 11.75, 85F = 80, 70F = 233, 60F = 313, 50F = 407.5, ** (end) = 460.5
 //data = -9.28*dial + 873
 
