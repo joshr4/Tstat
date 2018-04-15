@@ -8,12 +8,12 @@ module.exports = router;
 
 router.get('/ch0', function (req, res, next) {
   adc.readCh(0)
-    .then(data => res.json(data))
+    .then(data => res.json({data}))
     .catch(next)
 });
 
 router.get('/ch1', function (req, res, next) {
-  adc.readCh(1)
+  adc.updateChannels()
     .then(data => res.json({data}))
     .catch(next)
 });
