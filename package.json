@@ -2,7 +2,7 @@
   "name": "tstat",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "/main/index.js",
   "scripts": {
     "start": "nodemon server -w server",
     "test": "echo \"Error: no test specified\" && exit 1"

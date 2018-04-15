@@ -12,9 +12,6 @@ const PORT = 8080 //|| process.env.PORT;
 
 module.exports = app;
 
-app.listen(PORT, () => console.log(`Change the temp on port ${PORT}`));
-
-
 // logging middleware
 app.use(morgan('dev'));
 

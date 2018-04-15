@@ -16,27 +16,22 @@ const progGainAmp = '4096'; // see index.js for allowed values for your chip
 
 //read ch
 adc.readCh = (channel) => {
-    return new Promise(function (resolve) {
+    return new Promise(function (resolve, reject) {
         if (!adc.busy) {
             adc.readADCSingleEnded(channel, progGainAmp, samplesPerSecond, function (err, data) {
                 if (err) {
-                    //logging / troubleshooting code goes here...  
+                    reject(err);
                     throw err;
                 }
-                resolve(data)
+                resolve(data);
             })
         }
     });
 }
 
-adc.ch1 = () => {
-    adc.readCh(1)
-    .then(data => data)
-}
-adc.ch0 = () => {
-    adc.readCh(0)
-    .then(data => data)
-}
+adc.ch1 = () => adc.readCh(1).then(data => data)
+adc.ch0 = () => adc.readCh(0).then(data => data)
+
 // if you made it here, then the data object contains your reading! 
 //Vin--R1--Vout--R2--Gnd
 //Vout = Vin*(R2/(R2+R1))
