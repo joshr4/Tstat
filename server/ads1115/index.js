@@ -15,7 +15,7 @@ const samplesPerSecond = '250'; // see index.js for allowed values for your chip
 const progGainAmp = '4096'; // see index.js for allowed values for your chip  
 
 //read ch
-adc.readch = (channel) => {
+adc.readCh = (channel) => {
     return new Promise(function (resolve) {
         if (!adc.busy) {
             adc.readADCSingleEnded(channel, progGainAmp, samplesPerSecond, function (err, data) {
@@ -30,13 +30,12 @@ adc.readch = (channel) => {
 }
 
 adc.updateChannels = () => {
-    Promise.all([
-        adc.readch(0),
-        adc.readch(1),
-        adc.readch(2),
-        adc.readch(3),        
+    return Promise.all([
+        adc.readCh(0),
+        adc.readCh(1),
+        adc.readCh(2),
+        adc.readCh(3),
     ])
-    .then(data => data)
 }
 // if you made it here, then the data object contains your reading! 
 //Vin--R1--Vout--R2--Gnd
