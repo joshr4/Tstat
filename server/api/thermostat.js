@@ -9,13 +9,13 @@ module.exports = router;
 router.get('/ch0', function (req, res, next) {
   adc.readCh(0)
     .then(data => res.json({data}))
-    .catch(res.json('error'))
+    .catch(next)
 });
 
 router.get('/ch1', function (req, res, next) {
   adc.updateChannels()
     .then(data => res.json({data}))
-    .catch(res.json('error'))
+    .catch(next)
 });
 
 router.get('/maggie', function (req, res, next) {
