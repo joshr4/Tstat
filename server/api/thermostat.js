@@ -3,19 +3,19 @@ const router = require('express').Router();
 const Promise = require('bluebird')
 //const adc = Promise.promisifyAll(require('../ads1115'))
 const adc = require('../ads1115')
+const stat = require('../stat')
 
 module.exports = router;
 
-router.get('/ch0', function (req, res, next) {
-  adc.readCh(0)
-    .then(data => res.json({data}))
-    .catch(next)
+router.get('/temp', function (req, res, next) {
+  res.json(stat.temp.value)  
+  // adc.readCh(0)
+  //   .then(data => res.json({data}))
+  //   .catch(next)
 });
 
-router.get('/ch1', function (req, res, next) {
-  adc.readCh(1)
-    .then(data => res.json({data}))
-    .catch(next)
+router.get('/dial', function (req, res, next) {
+  res.json(stat.dial.value)
 });
 
 router.get('/maggie', function (req, res, next) {

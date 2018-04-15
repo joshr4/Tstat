@@ -47,17 +47,6 @@ stat.start = () => {
 }
 
 
-//setup schedules  moment JS
-// for (var i = 0; i < 6; i++) { //0=sunday, 6=saturday
-//     this.occSch[i] = {};
-//     this.unccSch[i] = {};
-//     for (var j = 0; j < 4; j++) { //0=unoccsleep, 1=occmorning, 2=unoccday, 3=occnight, 4=unoccsleep 
-//         this.occSch[i][j] = { start: '00:00', end: '00:00' };
-//         this.unoccSch[i][j] = { start: '00:00', end: '00:00' };
-//     }
-// }
-// }
-
 stat.heatOn = function () { 
    // if (stat.lastOff + stat.minOffTime < Date.getTime() / 1000) {
         //turn on heat
@@ -73,30 +62,5 @@ stat.heatOff = function () {
         //stat.lastOff = Date.getTime() / 1000;
    // }
 }
-
-// tstat.prototype.setSchedule = function () {
-
-//     var weekday = $('#weekday').val();
-//     var start = $('#start-time').val();
-//     var end = $('#end-time').val();
-//     this.occSch[weekday] = { start: start, end: end };
-// }
-
-// tstat.prototype.enabled = function () { //run this main function when stat is enabled
-
-//     this.getTstat(); //update temp and setpoint
-
-//     if (this.occSch[Date.getDay()].start < Date.getTime) {
-//         if (this.temperature < this.occSetpoint - this.deadband / 2) {
-//             this.heatOn();
-//         }
-
-//         if (this.temperature > this.occSetpoint + this.deadband / 2) {
-//             this.heatOff();
-//         }
-//     }
-
-
-// }
 
 module.exports = stat;
