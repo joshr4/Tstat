@@ -19,7 +19,7 @@ router.get('/ch1', function (req, res, next) {
 });
 
 router.get('/maggie', function (req, res, next) {
-  res.json({maggie: 'is the best'}
+  res.json({maggie: 'is the best'})
   // adc.readch1()
   //   .then(data => res.json({maggie: 'is the best'}))
   //   .catch(next)
