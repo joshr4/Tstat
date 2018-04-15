@@ -8,6 +8,7 @@ var stat = {
     deadband: 2, //amount temp must rise above setpoint before heater turns off
 
     //variables
+    heat: false,
     lastOn: Date.now(),
     lastOff: Date.now() - 9000,
     temperature: null,
@@ -48,16 +49,18 @@ stat.start = () => {
 
 
 stat.heatOn = function () {
-    if (stat.lastOff + stat.minOffTime < Date.now()) {
+    if (!stat.heat && stat.lastOff + stat.minOffTime < Date.now()) {
         console.log('heat on!')
+        stat.heat = true;
         stat.lastOn = Date.now();
     }
     else console.log('else heaton, lastOn: ',stat.lastOn, ', lastOff: ',stat.lastOff)
 }
 
 stat.heatOff = function () {
-    if (stat.lastOn + stat.minOnTime < Date.now()) {
+    if (stat.heat && stat.lastOn + stat.minOnTime < Date.now()) {
         console.log('heat off!')
+        stat.heat = false;
         stat.lastOff = Date.now();
     }
     else console.log('else heatoff, lastOn: ',stat.lastOn, ', lastOff: ',stat.lastOff)
