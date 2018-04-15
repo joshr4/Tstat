@@ -59,19 +59,19 @@ stat.start = () => {
 // }
 
 stat.heatOn = function () { 
-    if (stat.lastOff + stat.minOffTime < Date.getTime() / 1000) {
+   // if (stat.lastOff + stat.minOffTime < Date.getTime() / 1000) {
         //turn on heat
         console.log('heat on')
-        stat.lastOn = Date.getTime() / 1000;
-    }
+    //     stat.lastOn = Date.getTime() / 1000;
+    // }
 }
 
 stat.heatOff = function () {
-    if (stat.lastOn + stat.minOnTime < Date.getTime() / 1000) {
+    //if (stat.lastOn + stat.minOnTime < Date.getTime() / 1000) {
         //turn off heat
         console.log('heat off')        
-        stat.lastOff = Date.getTime() / 1000;
-    }
+        //stat.lastOff = Date.getTime() / 1000;
+   // }
 }
 
 // tstat.prototype.setSchedule = function () {
