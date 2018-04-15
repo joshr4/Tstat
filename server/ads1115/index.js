@@ -29,8 +29,8 @@ adc.readCh = (channel) => {
     });
 }
 
-adc.ch1 = () => adc.readCh(1).then(data => data)
-adc.ch0 = () => adc.readCh(0).then(data => data)
+adc.ch1 = () => adc.readCh(1).then(data => data) //dial
+adc.ch0 = () => adc.readCh(0).then(data => data) //temp
 
 // if you made it here, then the data object contains your reading! 
 //Vin--R1--Vout--R2--Gnd
