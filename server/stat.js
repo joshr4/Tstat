@@ -3,8 +3,11 @@ const adc = require('./ads1115')
 var stat = {}
 
 stat.update = () => {
-    stat.ch0 = adc.ch0()
-    console.log('ch0 ', stat.ch0)
+    adc.ch0()
+    .then(data => {
+        stat.ch0 = data
+    });
+    console.log(stat.ch0)
 }
 
 stat.start = () => {
