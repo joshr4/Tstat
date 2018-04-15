@@ -3,13 +3,13 @@ var curDate = new Date
 
 var stat = {
     //constants
-    minRunTime: 8, //minimum time to let the heater run, in seconds
-    minOffTime: 8, //minimum time before turning heater back on, in seconds
+    minRunTime: 10000, //minimum time to let the heater run, in milli seconds
+    minOffTime: 10000, //minimum time before turning heater back on, in milli seconds
     deadband: 2, //amount temp must rise above setpoint before heater turns off
 
     //variables
-    lastOn: Date.now() / 1000,
-    lastOff: Date.now() / 1000 - 8,
+    lastOn: Date.now(),
+    lastOff: Date.now() - 9000,
     temperature: null,
     activeSetpoint: 70,
     occSetpoint: 70,
@@ -48,19 +48,19 @@ stat.start = () => {
 
 
 stat.heatOn = function () {
-    if (stat.lastOff + stat.minOffTime < Date.now() / 1000) {
+    if (stat.lastOff + stat.minOffTime < Date.now()) {
         console.log('heat on')
-        stat.lastOn = Date.now() / 1000;
+        stat.lastOn = Date.now();
     }
     else console.log('else 56')
 }
 
 stat.heatOff = function () {
-    if (stat.lastOn + stat.minOnTime < Date.now() / 1000) {
+    if (stat.lastOn + stat.minOnTime < Date.now()) {
         console.log('heat off')
-        stat.lastOff = Date.now() / 1000;
+        stat.lastOff = Date.now();
     }
-    else console.log('else 65')
+    else console.log('else 63')
 
 }
 
