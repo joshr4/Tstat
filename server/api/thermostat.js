@@ -7,6 +7,13 @@ const stat = require('../stat')
 
 module.exports = router;
 
+router.get('/', function (req, res, next) {
+  res.json(stat)  
+  // adc.readCh(0)
+  //   .then(data => res.json({data}))
+  //   .catch(next)
+});
+
 router.get('/temp', function (req, res, next) {
   res.json(stat.temp.value)  
   // adc.readCh(0)
