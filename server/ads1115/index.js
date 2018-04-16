@@ -21,7 +21,7 @@ adc.readCh = (channel) => {
             adc.readADCSingleEnded(channel, progGainAmp, samplesPerSecond, function (err, data) {
                 if (err) {
                     reject(err);
-                    throw err;
+                    //throw err;
                 }
                 resolve(data);
             })
@@ -39,10 +39,5 @@ adc.ch0 = () => adc.readCh(0).then(data => data) //temp
 //Vout*R1/Vin = R2 - Vout*R2/Vin
 //R1 = (Vin*R2)/Vout - R2
 //resistor = 8.19 kohm
-
-//dial setpoint
-//var dial = (data - 873) / -9.28
-//Tstat dial * (end) = 11.75, 85F = 80, 70F = 233, 60F = 313, 50F = 407.5, ** (end) = 460.5
-//data = -9.28*dial + 873
 
 module.exports = adc;
