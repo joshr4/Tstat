@@ -9,7 +9,7 @@ router.use('/trends', require('./trends'));
 //   res.status(404).send('Not found');
 // });
 // 404 middleware
-app.use((req, res, next) =>
+router.use((req, res, next) =>
   path.extname(req.path).length > 0 ?
     res.status(404).send('Not found') :
     next()
