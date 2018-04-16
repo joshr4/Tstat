@@ -20,26 +20,22 @@ var stat = {
     unoccSch: {},
     temp: {
         raw: 0, value: 70, res: 10,
-        A: 0.001125308852122,
-        B: 0.000234711863267,
-        C: 0.000000085663516
+        A: 0.005925308852122,
+        B: 0.018834711863267,
+        C: 0.000000595663516
     },  //temp
     dial: { raw: 0, value: 65 }, //dial
 }
 
-//Steinhart - Hart Equation 1/T = A+B(LnR)+C(LnR)^3
+
 
 stat.updateCh = () => {
     adc.ch0() //get temp
         .then(data => {
             stat.temp.raw = data
-            //Vout = Vin*(R2/(R2+R1))
-            //dataR2/5 + dataR1/5 = R2
-            //data*R1/5 = R2(1 + data/5)
-            //data*R1/(5 + data) = R2
-            //resistor = 8.19 kohm
+            //Steinhart - Hart Equation 1/T = A+B(LnR)+C(LnR)^3
             stat.temp.res = 8.19 / (5000 / data - 1)
-            stat.temp.value = 1 / (stat.temp.A + stat.temp.B * Math.log(stat.temp.res) + stat.temp.C * Math.pow(Math.log(stat.temp.res), 3))
+            stat.temp.value = 1 / (stat.temp.A + stat.temp.B * Math.log(stat.temp.res) + stat.temp.C * Math.pow(Math.log - 273.15(stat.temp.res), 3))
             adc.ch1() //get dial
                 .then(data => {
                     stat.dial.raw = data;
