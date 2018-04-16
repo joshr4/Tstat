@@ -55,8 +55,8 @@ stat.compareTemp = () => {
 }
 
 stat.start = () => {
-    setInterval(stat.updateCh, 1000)
-    setInterval(stat.compareTemp, 1000)
+    setInterval(stat.updateCh, 3000)
+    setInterval(stat.compareTemp, 3000)
 }
 
 
