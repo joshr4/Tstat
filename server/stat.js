@@ -38,7 +38,7 @@ stat.updateCh = () => {
             //data*R1/5 = R2(1 + data/5)
             //data*R1/(5 + data) = R2
             //resistor = 8.19 kohm
-            stat.temp.resistance = 8.19 / (5000 / data - 1)
+            stat.temp.res = 8.19 / (5000 / data - 1)
             stat.temp.value = 1 / (stat.temp.A + stat.temp.B * Math.log(stat.temp.res) + stat.temp.C * Math.pow(Math.log(stat.temp.res), 3))
             adc.ch1() //get dial
                 .then(data => {
