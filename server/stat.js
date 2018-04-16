@@ -19,7 +19,7 @@ var stat = {
     occSch: {},
     unoccSch: {},
     temp: {
-        raw: 0, value: 70, res: 10,
+        raw: 0, value: 70, res: 10, f:70, c: 20,
         A: 0.002525308852122,
         B: 0.000374711863267,
         C: 0.000000595663516
@@ -35,7 +35,8 @@ stat.updateCh = () => {
             stat.temp.raw = data
             //Steinhart - Hart Equation 1/T = A+B(LnR)+C(LnR)^3
             stat.temp.res = 8.19 / (5000 / data - 1)
-            stat.temp.value = 1 / (stat.temp.A + stat.temp.B * Math.log(stat.temp.res) + stat.temp.C * Math.pow(Math.log(stat.temp.res), 3)) - 273.15
+            stat.temp.c = 1 / (stat.temp.A + stat.temp.B * Math.log(stat.temp.res) + stat.temp.C * Math.pow(Math.log(stat.temp.res), 3)) - 273.15
+            stat.temp.f = stat.temp.c * 1.8 + 32
             adc.ch1() //get dial
                 .then(data => {
                     stat.dial.raw = data;
