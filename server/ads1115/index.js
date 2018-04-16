@@ -14,7 +14,6 @@ const adc = new ads1x15(chip);
 const samplesPerSecond = '250'; // see index.js for allowed values for your chip  
 const progGainAmp = '4096'; // see index.js for allowed values for your chip  
 
-//read ch
 adc.readCh = (channel) => {
     return new Promise(function (resolve, reject) {
         if (!adc.busy) {
@@ -31,13 +30,5 @@ adc.readCh = (channel) => {
 
 adc.ch1 = () => adc.readCh(1).then(data => data) //dial
 adc.ch0 = () => adc.readCh(0).then(data => data) //temp
-
-// if you made it here, then the data object contains your reading! 
-//Vin--R1--Vout--R2--Gnd
-//Vout = Vin*(R2/(R2+R1))
-//Vout(R2+R1)/Vin=R2
-//Vout*R1/Vin = R2 - Vout*R2/Vin
-//R1 = (Vin*R2)/Vout - R2
-//resistor = 8.19 kohm
 
 module.exports = adc;

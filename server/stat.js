@@ -42,7 +42,6 @@ stat.updateCh = () => {
                     stat.dial.raw = data;
                     stat.dial.value = (data - 873) / -9.28
                     stat.occSetpoint = stat.dial.value
-                    console.log('Temp: ', stat.temp.value, 'Dial: ', stat.dial.value)
                 })
                 .catch(err => {
                     throw err
@@ -68,7 +67,6 @@ stat.heatOn = function () {
         stat.heat = true;
         stat.lastOn = Date.now();
     }
-    else console.log('else ON, lastOn: ', stat.lastOn, ', lastOff: ', stat.lastOff)
 }
 
 stat.heatOff = function () {
@@ -78,8 +76,6 @@ stat.heatOff = function () {
         stat.heat = false;
         stat.lastOff = Date.now();
     }
-    else console.log('else OFF, lastOn: ', stat.lastOn, ', lastOff: ', stat.lastOff)
-
 }
 
 module.exports = stat;
