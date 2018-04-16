@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
 const adc = require('./ads1115/')
-const PORT = 8080 //|| process.env.PORT;
+const PORT = 8081 //|| process.env.PORT;
 const stat = require('./stat')
 // const adc = require('./ads1115/')
 
