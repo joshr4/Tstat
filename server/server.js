@@ -13,7 +13,7 @@ const stat = require('./stat')
 
 module.exports = app;
 
-//app.listen(PORT, () => console.log(`Change the temp on port ${PORT}`))
+app.listen(PORT, () => console.log(`Change the temp on port ${PORT}`))
 
 stat.start() //starts up the thermostat logic loops
 
