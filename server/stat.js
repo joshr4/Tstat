@@ -39,7 +39,7 @@ stat.updateCh = () => {
             //data*R1/(5 + data) = R2
             //resistor = 8.19 kohm
             stat.temp.resistance = 8.19 / (5000 / data - 1)
-            stat.temp.value = 1 / (stat.temp.A + temp.stat.B * Math.log(stat.temp.res) + stat.temp.C * Math.pow(Math.log(stat.temp.res), 3))
+            stat.temp.value = 1 / (stat.temp.A + stat.temp.B * Math.log(stat.temp.res) + stat.temp.C * Math.pow(Math.log(stat.temp.res), 3))
             adc.ch1() //get dial
                 .then(data => {
                     stat.dial.raw = data;
